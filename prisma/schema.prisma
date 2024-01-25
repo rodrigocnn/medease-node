@@ -9,3 +9,24 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Patient {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  birth     String   @db.VarChar(255)
+  phone     String   @db.VarChar(20)
+  rg        String   @db.VarChar(20)
+  cpf       String?  @db.VarChar(20)
+  address   String   @db.VarChar(60)
+  district  String   @db.VarChar(80)
+  city      String   @db.VarChar(80)
+  state     String   @db.VarChar(80)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+
+
+
