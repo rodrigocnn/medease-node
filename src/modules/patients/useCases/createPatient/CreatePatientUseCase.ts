@@ -17,6 +17,10 @@ export class CreatePatientUseCase {
   constructor(private patientsRepository: IPatientsRepository) {}
 
   execute(patient: IRequest) {
+    if (!patient.name || !patient.email) {
+      throw new Error("Name and email are required.")
+    }
+
     this.patientsRepository.create(patient)
   }
 }
