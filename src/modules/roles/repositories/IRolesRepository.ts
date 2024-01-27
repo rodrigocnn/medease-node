@@ -7,4 +7,5 @@ export interface IRolesRepository {
   read(): void
   update(id: string, role: ICreateRoleDTO): void
   delete(id: string): void
+  exists?(id: string): Promise<boolean>
 }

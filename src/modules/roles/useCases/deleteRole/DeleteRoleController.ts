@@ -4,10 +4,10 @@ import { DeleteRoleUseCase } from "./DeleteRoleUseCase"
 export class DeleteRoleController {
   constructor(private deleteRoleUseCase: DeleteRoleUseCase) {}
 
-  handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     try {
       const id = request.params.roleId
-      this.deleteRoleUseCase.execute(id)
+      await this.deleteRoleUseCase.execute(id)
       return response.status(201).send()
     } catch (error) {
       if (error instanceof Error) {
