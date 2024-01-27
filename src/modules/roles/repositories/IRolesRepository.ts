@@ -4,4 +4,5 @@ export interface ICreateRoleDTO {
 
 export interface IRolesRepository {
   create(role: ICreateRoleDTO): void
+  read(): void
 }

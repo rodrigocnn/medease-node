@@ -5,4 +5,8 @@ export class RolesRepositoryPrisma implements IRolesRepository {
   async create(role: ICreateRoleDTO) {
     await prisma.role.create({ data: role })
   }
+  async read() {
+    const roles = await prisma.role.findMany()
+    return roles
+  }
 }
