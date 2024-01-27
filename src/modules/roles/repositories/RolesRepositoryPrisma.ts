@@ -20,4 +20,12 @@ export class RolesRepositoryPrisma implements IRolesRepository {
       } as ICreateRoleDTO,
     })
   }
+
+  async delete(id: string) {
+    await prisma.role.delete({
+      where: {
+        id: Number(id),
+      },
+    })
+  }
 }
