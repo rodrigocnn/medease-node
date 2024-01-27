@@ -9,4 +9,15 @@ export class RolesRepositoryPrisma implements IRolesRepository {
     const roles = await prisma.role.findMany()
     return roles
   }
+
+  async update(id: string, role: ICreateRoleDTO) {
+    await prisma.role.update({
+      where: {
+        id: Number(id),
+      },
+      data: {
+        name: role.name,
+      } as ICreateRoleDTO,
+    })
+  }
 }
