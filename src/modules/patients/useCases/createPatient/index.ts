@@ -1,6 +1,6 @@
 import { PatientsRepositoryPrima } from "../../repositories/PatientsRepositoryPrima"
+import { CreatePatientController } from "./CreatePatientController"
 import { CreatePatientUseCase } from "./CreatePatientUseCase"
-import { CreatePatientController } from "./createPatientController"
 
 const patientsRepository = new PatientsRepositoryPrima()
 const createPatientUseCase = new CreatePatientUseCase(patientsRepository)
