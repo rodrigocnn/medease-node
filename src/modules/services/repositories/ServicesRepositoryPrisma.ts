@@ -2,7 +2,7 @@ import { prisma } from "../../../database/prismaClient"
 
 import { ICreateServiceDTO, IServicesRepository } from "./IServicesRepository"
 
-export class SerrvicesRepositoryPrisma implements IServicesRepository {
+export class ServicesRepositoryPrisma implements IServicesRepository {
   async create(service: ICreateServiceDTO) {
     await prisma.service.create({ data: service })
   }
@@ -12,7 +12,7 @@ export class SerrvicesRepositoryPrisma implements IServicesRepository {
   }
 
   async update(id: string, service: ICreateServiceDTO) {
-    await prisma.role.update({
+    await prisma.service.update({
       where: {
         id: Number(id),
       },
@@ -24,7 +24,7 @@ export class SerrvicesRepositoryPrisma implements IServicesRepository {
   }
 
   async delete(id: string) {
-    await prisma.role.delete({
+    await prisma.service.delete({
       where: {
         id: Number(id),
       },
@@ -32,7 +32,7 @@ export class SerrvicesRepositoryPrisma implements IServicesRepository {
   }
 
   async exists(id: string) {
-    const role = await prisma.role.findFirst({
+    const role = await prisma.service.findFirst({
       where: {
         id: {
           equals: Number(id),
