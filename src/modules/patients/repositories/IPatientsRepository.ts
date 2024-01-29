@@ -13,4 +13,8 @@ export interface ICreatePatientDTO {
 
 export interface IPatientsRepository {
   create(patient: ICreatePatientDTO): void
+  read(): void
+  update(id: string, role: ICreatePatientDTO): void
+  // delete(id: string): void
+  // exists?(id: string): Promise<boolean>
 }
