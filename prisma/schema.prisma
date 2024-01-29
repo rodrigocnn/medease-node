@@ -33,5 +33,12 @@ model Role {
   updatedAt DateTime @updatedAt
 }
 
+model Service {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(255)
+  price     Decimal  @db.Decimal(7, 2)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 
