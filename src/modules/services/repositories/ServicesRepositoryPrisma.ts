@@ -7,7 +7,7 @@ export class SerrvicesRepositoryPrisma implements IServicesRepository {
     await prisma.service.create({ data: service })
   }
   async read() {
-    const services = await prisma.role.findMany()
+    const services = await prisma.service.findMany()
     return services
   }
 
