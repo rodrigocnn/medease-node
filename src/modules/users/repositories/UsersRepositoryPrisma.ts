@@ -42,4 +42,16 @@ export class UsersRepositoryPrisma implements IUsersRepository {
 
     return !!user
   }
+
+  async existsbyEmail(email: string) {
+    const user = await prisma.user.findFirst({
+      where: {
+        email: {
+          equals: email,
+        },
+      },
+    })
+
+    return user
+  }
 }

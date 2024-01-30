@@ -15,7 +15,6 @@ export class CreateUserUseCase {
     if (!user.name || !user.email || !user.password) {
       throw new Error("Name,  email and password are required")
     }
-
     const passwordHash = await hash(user.password, 8)
     const userModified = { ...user }
     userModified.password = passwordHash
