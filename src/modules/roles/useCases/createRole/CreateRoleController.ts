@@ -1,12 +1,12 @@
 import { Request, Response } from "express"
 import { CreateRoleUseCase } from "./CreateRoleUseCase"
+import { container } from "tsyringe"
 
 export class CreateRoleController {
-  constructor(private createRoleUseCase: CreateRoleUseCase) {}
-
   handle(request: Request, response: Response) {
     try {
-      this.createRoleUseCase.execute({ ...request.body })
+      const createRoleUseCase = container.resolve(CreateRoleUseCase)
+      createRoleUseCase.execute({ ...request.body })
       return response.status(201).send()
     } catch (error) {
       if (error instanceof Error) {

@@ -13,7 +13,7 @@ Comando para rodar migração do prisma : npx prisma migrate dev
 
 [ ] CRUD de Appointments [ ] Create [ ] Read [ ] Update [ ] Delete
 
-# Othes implementations
+# Other implementations
 
 [ ] resolver problema para update quando não encontrar registro
 [ ] Melhorar exportação das rotas
