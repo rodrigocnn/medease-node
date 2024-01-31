@@ -11,7 +11,7 @@ export class RolesRepositoryPrisma implements IRolesRepository {
   }
 
   async update(id: string, role: ICreateRoleDTO) {
-    await prisma.role.update({
+    return await prisma.role.update({
       where: {
         id: Number(id),
       },

@@ -1,4 +1,4 @@
-import { IRolesRepository } from "../../repositories/IRolesRepository"
+import { IResponseRole, IRolesRepository } from "../../repositories/IRolesRepository"
 
 interface IRequest {
   id: string
@@ -8,11 +8,11 @@ interface IRequest {
 export class UpdateRoleUseCase {
   constructor(private rolesRepository: IRolesRepository) {}
 
-  execute(role: IRequest) {
+  async execute(role: IRequest): Promise<IResponseRole> {
     if (!role.name) {
       throw new Error("Name is required")
     }
 
-    this.rolesRepository.update(role.id, role)
+    return await this.rolesRepository.update(role.id, role)
   }
 }

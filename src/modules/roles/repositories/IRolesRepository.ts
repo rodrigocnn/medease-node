@@ -12,7 +12,7 @@ export interface IResponseRole {
 export interface IRolesRepository {
   create(role: ICreateRoleDTO): void
   read(): void
-  update(id: string, role: ICreateRoleDTO): void
+  update(id: string, role: ICreateRoleDTO): Promise<IResponseRole>
   delete(id: string): void
   show(id: string): Promise<IResponseRole | null>
   exists?(id: string): Promise<boolean>

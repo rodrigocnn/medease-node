@@ -11,8 +11,8 @@ export class UpdateRoleController {
     }
 
     try {
-      const roles = await this.updateRoleUseCase.execute(role)
-      return response.status(201).send(roles)
+      const result = await this.updateRoleUseCase.execute(role)
+      return response.status(201).send(result)
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })
