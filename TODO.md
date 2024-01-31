@@ -15,6 +15,8 @@ Comando para rodar migração do prisma : npx prisma migrate dev
 
 # Other implementations
 
+[ ] Não retornar a senha no usuário no busca
 [ ] resolver problema para update quando não encontrar registro
 [ ] Melhorar exportação das rotas
 [ ] Validar se Usuário já existe ao cadastrar e-mail
+[ ] Implementação de testes

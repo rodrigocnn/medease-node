@@ -2,10 +2,18 @@ export interface ICreateRoleDTO {
   name: string
 }
 
+export interface IResponseRole {
+  id: number
+  name: string
+  createdAt: Date
+  updatedAt: Date
+}
+
 export interface IRolesRepository {
   create(role: ICreateRoleDTO): void
   read(): void
   update(id: string, role: ICreateRoleDTO): void
   delete(id: string): void
+  show(id: string): Promise<IResponseRole | null>
   exists?(id: string): Promise<boolean>
 }

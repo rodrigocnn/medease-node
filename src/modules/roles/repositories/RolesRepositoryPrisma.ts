@@ -40,4 +40,16 @@ export class RolesRepositoryPrisma implements IRolesRepository {
 
     return !!role
   }
+
+  async show(id: string) {
+    const role = await prisma.role.findFirst({
+      where: {
+        id: {
+          equals: Number(id),
+        },
+      },
+    })
+
+    return role
+  }
 }
