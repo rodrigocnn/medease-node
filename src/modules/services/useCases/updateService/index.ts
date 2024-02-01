@@ -1,6 +1,6 @@
 import { ServicesRepositoryPrisma } from "../../repositories/ServicesRepositoryPrisma"
-import { UpdateServiceController } from "./UpdateRoleController"
-import { UpdateServiceUseCase } from "./UpdateRoleUseCase"
+import { UpdateServiceController } from "./UpdateServiceController"
+import { UpdateServiceUseCase } from "./UpdateServiceUseCase"
 
 const serviceRepository = new ServicesRepositoryPrisma()
 const updateServiceUseCase = new UpdateServiceUseCase(serviceRepository)

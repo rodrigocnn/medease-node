@@ -1,6 +1,6 @@
 import { prisma } from "../../../database/prismaClient"
 
-import { ICreateServiceDTO, IServicesRepository } from "./IServicesRepository"
+import { ICreateServiceDTO, IResponseService, IServicesRepository } from "./IServicesRepository"
 
 export class ServicesRepositoryPrisma implements IServicesRepository {
   async create(service: ICreateServiceDTO) {
@@ -11,8 +11,8 @@ export class ServicesRepositoryPrisma implements IServicesRepository {
     return services
   }
 
-  async update(id: string, service: ICreateServiceDTO) {
-    await prisma.service.update({
+  async update(id: string, service: ICreateServiceDTO): Promise<IResponseService | null> {
+    const result = await prisma.service.update({
       where: {
         id: Number(id),
       },
@@ -21,6 +21,16 @@ export class ServicesRepositoryPrisma implements IServicesRepository {
         price: service.price,
       } as ICreateServiceDTO,
     })
+
+    return result
+      ? {
+          id: result.id,
+          name: result.name,
+          price: Number(result.price),
+          createdAt: result.createdAt,
+          updatedAt: result.updatedAt,
+        }
+      : null
   }
 
   async delete(id: string) {
@@ -29,6 +39,19 @@ export class ServicesRepositoryPrisma implements IServicesRepository {
         id: Number(id),
       },
     })
+  }
+
+  async show(id: string): Promise<IResponseService | null> {
+    const result = await prisma.service.findFirst({ where: { id: Number(id) } })
+    return result
+      ? {
+          id: result.id,
+          name: result.name,
+          price: Number(result.price),
+          createdAt: result.createdAt,
+          updatedAt: result.updatedAt,
+        }
+      : null
   }
 
   async exists(id: string) {

@@ -1,5 +1,7 @@
 import { Request, Response } from "express"
-import { UpdateServiceUseCase } from "./UpdateRoleUseCase"
+import { UpdateServiceUseCase } from "./UpdateServiceUseCase"
+import { successResponse } from "../../../../shared/utils/responseUtils"
+import { IResponseService } from "../../repositories/IServicesRepository"
 
 export class UpdateServiceController {
   constructor(private updateServiceUseCase: UpdateServiceUseCase) {}
@@ -11,8 +13,9 @@ export class UpdateServiceController {
     }
 
     try {
-      const roles = await this.updateServiceUseCase.execute(service)
-      return response.status(201).send(roles)
+      const serviceUpdated = await this.updateServiceUseCase.execute(service)
+      const result = successResponse<IResponseService>("Cargo atualizado com sucesso", serviceUpdated)
+      return response.status(201).send(result)
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

@@ -1,4 +1,4 @@
-import { IServicesRepository } from "../../repositories/IServicesRepository"
+import { IResponseService, IServicesRepository } from "../../repositories/IServicesRepository"
 
 interface IRequest {
   id: string
@@ -9,11 +9,11 @@ interface IRequest {
 export class UpdateServiceUseCase {
   constructor(private servicesRepository: IServicesRepository) {}
 
-  execute(service: IRequest) {
+  async execute(service: IRequest): Promise<IResponseService | null> {
     if (!service.name || !service.price) {
       throw new Error("Name and Price are required")
     }
 
-    this.servicesRepository.update(service.id, service)
+    return await this.servicesRepository.update(service.id, service)
   }
 }

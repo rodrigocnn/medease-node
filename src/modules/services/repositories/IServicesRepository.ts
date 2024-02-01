@@ -3,10 +3,19 @@ export interface ICreateServiceDTO {
   price: number
 }
 
+export interface IResponseService {
+  id: number
+  name: string
+  price: number
+  createdAt: Date
+  updatedAt: Date
+}
+
 export interface IServicesRepository {
   create(service: ICreateServiceDTO): void
   read(): void
-  update(id: string, role: ICreateServiceDTO): void
+  show(id: string): Promise<IResponseService | null>
+  update(id: string, role: ICreateServiceDTO): Promise<IResponseService | null>
   delete(id: string): void
   exists?(id: string): Promise<boolean>
 }
