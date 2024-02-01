@@ -1,4 +1,4 @@
-import { ICreateProfessionalDTO, IProfessionalsRepository } from "./IProfessionalsRepository"
+import { ICreateProfessionalDTO, IProfessionalsRepository, IResponseProfessional } from "./IProfessionalsRepository"
 import { prisma } from "../../../database/prismaClient"
 
 export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
@@ -9,6 +9,27 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
   async read() {
     const professionals = await prisma.professional.findMany()
     return professionals
+  }
+
+  async show(id: string): Promise<IResponseProfessional | null> {
+    const result = await prisma.professional.findFirst({ where: { id: Number(id) } })
+    return result
+      ? {
+          id: result.id,
+          name: result.name,
+          email: result.email,
+          birth: result.birth,
+          phone: result.phone,
+          rg: result.rg,
+          cpf: result.cpf || "",
+          address: result.address,
+          district: result.district,
+          city: result.city,
+          state: result.state,
+          createdAt: result.createdAt,
+          updatedAt: result.updatedAt,
+        }
+      : null
   }
 
   async update(id: string, professional: ICreateProfessionalDTO) {
@@ -29,5 +50,17 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
         state: professional.state,
       } as ICreateProfessionalDTO,
     })
+  }
+
+  async exists(id: string) {
+    const professional = await prisma.professional.findFirst({
+      where: {
+        id: {
+          equals: Number(id),
+        },
+      },
+    })
+
+    return !!professional
   }
 }
