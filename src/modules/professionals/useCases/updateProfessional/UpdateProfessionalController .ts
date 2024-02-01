@@ -1,5 +1,7 @@
 import { Request, Response } from "express"
 import { UpdateProfessionalUseCase } from "./UpdateProfessionalUseCase"
+import { successResponse } from "../../../../shared/utils/responseUtils"
+import { IResponseProfessional } from "../../repositories/IProfessionalsRepository"
 
 export class UpdateProfessionalController {
   constructor(private updateProfessionalUseCase: UpdateProfessionalUseCase) {}
@@ -11,8 +13,9 @@ export class UpdateProfessionalController {
     }
 
     try {
-      const roles = await this.updateProfessionalUseCase.execute(service)
-      return response.status(201).send(roles)
+      const professionalUpdate = await this.updateProfessionalUseCase.execute(service)
+      const result = successResponse<IResponseProfessional | null>("Cargo atualizado com sucesso", professionalUpdate)
+      return response.status(201).send(result)
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

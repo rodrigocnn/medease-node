@@ -18,7 +18,7 @@ export interface IResponseProfessional {
   birth: string
   phone: string
   rg: string
-  cpf: string
+  cpf: string | null
   address: string
   district: string
   city: string
@@ -31,7 +31,7 @@ export interface IProfessionalsRepository {
   create(professional: ICreateProfessionalDTO): void
   read(): void
   show(id: string): Promise<IResponseProfessional | null>
-  update(id: string, professional: ICreateProfessionalDTO): void
+  update(id: string, professional: ICreateProfessionalDTO): Promise<IResponseProfessional | null>
   // delete(id: string): void
   exists?(id: string): Promise<boolean>
 }

@@ -32,8 +32,8 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
       : null
   }
 
-  async update(id: string, professional: ICreateProfessionalDTO) {
-    await prisma.professional.update({
+  async update(id: string, professional: ICreateProfessionalDTO): Promise<IResponseProfessional | null> {
+    return await prisma.professional.update({
       where: {
         id: Number(id),
       },
@@ -43,7 +43,7 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
         birth: professional.birth,
         phone: professional.phone,
         rg: professional.rg,
-        cpf: professional.cpf,
+        cpf: professional.cpf || "",
         address: professional.address,
         district: professional.district,
         city: professional.city,

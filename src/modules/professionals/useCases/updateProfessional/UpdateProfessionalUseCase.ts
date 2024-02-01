@@ -1,4 +1,4 @@
-import { IProfessionalsRepository } from "../../repositories/IProfessionalsRepository"
+import { IProfessionalsRepository, IResponseProfessional } from "../../repositories/IProfessionalsRepository"
 
 interface IRequest {
   id: string
@@ -17,11 +17,11 @@ interface IRequest {
 export class UpdateProfessionalUseCase {
   constructor(private professionalRepository: IProfessionalsRepository) {}
 
-  execute(professional: IRequest) {
+  async execute(professional: IRequest): Promise<IResponseProfessional | null> {
     if (!professional.name || !professional.email) {
       throw new Error("Name and email are required.")
     }
 
-    this.professionalRepository.update(professional.id, professional)
+    return await this.professionalRepository.update(professional.id, professional)
   }
 }
