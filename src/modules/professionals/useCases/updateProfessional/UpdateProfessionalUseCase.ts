@@ -2,6 +2,7 @@ import { IProfessionalsRepository, IResponseProfessional } from "../../repositor
 
 interface IRequest {
   id: string
+  roleId: number
   name: string
   email: string
   birth: string

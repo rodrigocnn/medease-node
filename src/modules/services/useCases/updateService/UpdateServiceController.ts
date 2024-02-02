@@ -14,7 +14,7 @@ export class UpdateServiceController {
 
     try {
       const serviceUpdated = await this.updateServiceUseCase.execute(service)
-      const result = successResponse<IResponseService>("Cargo atualizado com sucesso", serviceUpdated)
+      const result = successResponse<IResponseService | null>("Cargo atualizado com sucesso", serviceUpdated)
       return response.status(201).send(result)
     } catch (error) {
       if (error instanceof Error) {
