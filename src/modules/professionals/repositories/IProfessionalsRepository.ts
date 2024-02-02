@@ -1,5 +1,6 @@
 export interface ICreateProfessionalDTO {
   name: string
+  roleId: number | null
   email: string
   birth: string
   phone: string
@@ -13,6 +14,7 @@ export interface ICreateProfessionalDTO {
 
 export interface IResponseProfessional {
   id: number
+  roleId: number | null
   name: string
   email: string
   birth: string

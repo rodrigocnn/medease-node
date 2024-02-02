@@ -16,6 +16,7 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
     return result
       ? {
           id: result.id,
+          roleId: result.roleId,
           name: result.name,
           email: result.email,
           birth: result.birth,
@@ -38,6 +39,7 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
         id: Number(id),
       },
       data: {
+        roleId: professional.roleId,
         name: professional.name,
         email: professional.email,
         birth: professional.birth,

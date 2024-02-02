@@ -1,5 +1,6 @@
 export class Professional {
   name: string
+  roleId: number | null
   email: string
   birth: string
   phone: string
