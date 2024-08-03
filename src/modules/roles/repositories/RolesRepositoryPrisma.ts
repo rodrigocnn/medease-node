@@ -6,7 +6,11 @@ export class RolesRepositoryPrisma implements IRolesRepository {
     await prisma.role.create({ data: role })
   }
   async read() {
-    const roles = await prisma.role.findMany()
+    const roles = await prisma.role.findMany({
+      where: {
+        deletedAt: null,
+      },
+    })
     return roles
   }
 
@@ -22,9 +26,13 @@ export class RolesRepositoryPrisma implements IRolesRepository {
   }
 
   async delete(id: string) {
-    await prisma.role.delete({
+    const now = new Date()
+    return await prisma.role.update({
       where: {
         id: Number(id),
+      },
+      data: {
+        deletedAt: now,
       },
     })
   }

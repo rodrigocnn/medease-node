@@ -7,7 +7,6 @@ Comando para rodar migração do prisma : npx prisma migrate dev
 [x] Implementar Autenticação
 [x] CRUD de Roles [x] Create [x] Read [x] Update [x] Delete
 [x] CRUD de Services [x] Create [x] Read [x] Update [x] Delete
-
 [ ] CRUD de Patients [x] Create [x] Read [x] Update [ ] Delete
 [ ] CRUD de Professionals [x] Create [x] Read [x] Update [ ] Delete
 [ ] CRUD de Users [x] Create [x] Read [ ] Update [ ] Delete
