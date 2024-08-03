@@ -45,6 +45,7 @@ model Service {
   schedules Schedule[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  deletedAt DateTime?       @db.DateTime
 
 }
 
