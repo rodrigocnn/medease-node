@@ -8,7 +8,7 @@ export class CreateServiceController {
   handle(request: Request, response: Response) {
     try {
       this.createServiceUseCase.execute({ ...request.body })
-      return response.status(201).send()
+      return response.status(201).send({ success: true })
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

@@ -35,6 +35,6 @@ export interface IProfessionalsRepository {
   read(): void
   show(id: string): Promise<IResponseProfessional | null>
   update(id: string, professional: ICreateProfessionalDTO): Promise<IResponseProfessional | null>
-  // delete(id: string): void
+  delete(id: string): void
   exists?(id: string): Promise<boolean>
 }

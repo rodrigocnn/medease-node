@@ -9,9 +9,12 @@ import { IPatientsRepository } from "../../modules/patients/repositories/IPatien
 import { PatientsRepositoryPrima } from "../../modules/patients/repositories/PatientsRepositoryPrima"
 import { ProfessionalsRepositoryPrima } from "../../modules/professionals/repositories/ProfessionalsRepositoryPrima"
 import { IProfessionalsRepository } from "../../modules/professionals/repositories/IProfessionalsRepository"
+import { SchedulesRepositoryPrisma } from "../../modules/schedules/repositories/SchedulesRepositoryPrisma"
+import { ISchedulesRepository } from "../../modules/schedules/repositories/ISchedulesRepository"
 
 container.registerSingleton<IRolesRepository>("RolesRepositoryPrisma", RolesRepositoryPrisma)
 container.registerSingleton<IUsersRepository>("UsersRepositoryPrisma", UsersRepositoryPrisma)
 container.registerSingleton<IServicesRepository>("ServicesRepositoryPrisma", ServicesRepositoryPrisma)
 container.registerSingleton<IPatientsRepository>("PatientsRepositoryPrisma", PatientsRepositoryPrima)
 container.registerSingleton<IProfessionalsRepository>("ProfessionalsRepositoryPrisma", ProfessionalsRepositoryPrima)
+container.registerSingleton<ISchedulesRepository>("SchedulesRepositoryPrisma", SchedulesRepositoryPrisma)

@@ -63,4 +63,12 @@ export class PatientsRepositoryPrima implements IPatientsRepository {
 
     return !!patient
   }
+
+  async delete(id: string) {
+    await prisma.patient.delete({
+      where: {
+        id: Number(id),
+      },
+    })
+  }
 }

@@ -3,6 +3,7 @@ import { updateProfessionalController } from "../modules/professionals/useCases/
 import { createProfessionalController } from "../modules/professionals/useCases/createProfessional"
 import { readProfessionalsController } from "../modules/professionals/useCases/readProfessionals"
 import { ShowProfessionalController } from "../modules/professionals/useCases/showProfessional/ShowProfessionalController"
+import { deleteProfessionalController } from "../modules/professionals/useCases/deleteProfessional"
 
 const professionalsRoutes = Router()
 
@@ -22,6 +23,10 @@ professionalsRoutes.get("/professionals", (request, response) => {
 
 professionalsRoutes.put("/professionals/:professionalId", (request, response) => {
   return updateProfessionalController.handle(request, response)
+})
+
+professionalsRoutes.delete("/professionals/:professionalId", (request, response) => {
+  return deleteProfessionalController.handle(request, response)
 })
 
 export { professionalsRoutes }

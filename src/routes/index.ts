@@ -4,6 +4,7 @@ import { rolesRoutes } from "./roles.routes"
 import { servicesRoutes } from "./service.routes"
 import { professionalsRoutes } from "./professionals.routes"
 import { usersRoutes } from "./users.routes"
+import { schedulesRoutes } from "./schedulest.routes"
 
 export const router = Router()
 
@@ -12,3 +13,4 @@ router.use(rolesRoutes)
 router.use(servicesRoutes)
 router.use(professionalsRoutes)
 router.use(usersRoutes)
+router.use(schedulesRoutes)

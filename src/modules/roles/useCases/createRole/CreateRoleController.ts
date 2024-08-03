@@ -7,7 +7,7 @@ export class CreateRoleController {
     try {
       const createRoleUseCase = container.resolve(CreateRoleUseCase)
       createRoleUseCase.execute({ ...request.body })
-      return response.status(201).send()
+      return response.status(201).send({ success: true })
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

@@ -16,6 +16,7 @@ export class CreateRoleUseCase {
     if (!role.name) {
       throw new Error("Name is required")
     }
+
     this.rolesRepository.create(role)
   }
 }

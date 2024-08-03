@@ -11,8 +11,8 @@ export class UpdatePatientController {
     }
 
     try {
-      const roles = await this.updatePatientUseCase.execute(service)
-      return response.status(201).send(roles)
+      await this.updatePatientUseCase.execute(service)
+      return response.status(201).send({ success: true })
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

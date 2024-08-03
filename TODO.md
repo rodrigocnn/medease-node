@@ -15,6 +15,7 @@ Comando para rodar migração do prisma : npx prisma migrate dev
 
 # Other implementations
 
+[ ] Ao cadastrar profissional não está aparecendo mensagem de sucesso
 [ ] Ajustar retorno padrão para cruds
 [ ] Professional deve retornar com join de roles
 [ ] Não retornar a senha no usuário no busca

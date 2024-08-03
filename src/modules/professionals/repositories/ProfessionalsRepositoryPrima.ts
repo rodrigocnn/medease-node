@@ -88,4 +88,12 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
 
     return !!professional
   }
+
+  async delete(id: string) {
+    await prisma.professional.delete({
+      where: {
+        id: Number(id),
+      },
+    })
+  }
 }

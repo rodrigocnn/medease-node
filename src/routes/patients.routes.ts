@@ -3,6 +3,7 @@ import { createPatientController } from "../modules/patients/useCases/createPati
 import { readPatientsController } from "../modules/patients/useCases/readPatients"
 import { updatePatientController } from "../modules/patients/useCases/updatePatient"
 import { ShowPatientController } from "../modules/patients/useCases/showPatient/ShowPatientController"
+import { deletePatientController } from "../modules/patients/useCases/deletePatient"
 
 const patientsRoutes = Router()
 
@@ -22,6 +23,10 @@ patientsRoutes.get("/patients/:patientId", (request, response) => {
 
 patientsRoutes.put("/patients/:patientId", (request, response) => {
   return updatePatientController.handle(request, response)
+})
+
+patientsRoutes.delete("/patients/:patientId", (request, response) => {
+  return deletePatientController.handle(request, response)
 })
 
 export { patientsRoutes }

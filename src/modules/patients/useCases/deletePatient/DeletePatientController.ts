@@ -1,12 +1,13 @@
 import { Request, Response } from "express"
-import { CreateProfessionalUseCase } from "./CreateProfessionalUseCase"
+import { DeletePatientUseCase } from "./DeletePatientUseCase"
 
-export class CreateProfessionalsController {
-  constructor(private createProfessionalUseCase: CreateProfessionalUseCase) {}
+export class DeletePatientController {
+  constructor(private deleteProfessionalUseCase: DeletePatientUseCase) {}
 
-  handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response) {
     try {
-      this.createProfessionalUseCase.execute({ ...request.body })
+      const id = request.params.patientId
+      await this.deleteProfessionalUseCase.execute(id)
       return response.status(201).send({ success: true })
     } catch (error) {
       if (error instanceof Error) {

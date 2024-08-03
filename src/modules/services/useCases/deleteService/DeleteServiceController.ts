@@ -8,7 +8,7 @@ export class DeleteServiceController {
     try {
       const id = request.params.serviceId
       await this.deleteServiceUseCase.execute(id)
-      return response.status(201).send()
+      return response.status(201).send({ success: true })
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

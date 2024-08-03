@@ -1,14 +1,14 @@
 import { Request, Response } from "express"
-import { DeleteRoleUseCase } from "./DeleteRoleUseCase"
 
-export class DeleteRoleController {
-  constructor(private deleteRoleUseCase: DeleteRoleUseCase) {}
+import { ReadSchedulesUseCase } from "./ReadSchedulesUseCase"
+
+export class ReadSchedulesController {
+  constructor(private readSchedulesUseCase: ReadSchedulesUseCase) {}
 
   async handle(request: Request, response: Response) {
     try {
-      const id = request.params.roleId
-      await this.deleteRoleUseCase.execute(id)
-      return response.status(201).send({ success: true })
+      const schedules = await this.readSchedulesUseCase.execute()
+      return response.status(201).send(schedules)
     } catch (error) {
       if (error instanceof Error) {
         return response.status(400).json({ error: error.message })

@@ -31,6 +31,6 @@ export interface IPatientsRepository {
   read(): void
   update(id: string, role: ICreatePatientDTO): void
   show(id: string): Promise<IResponsePatient | null>
-  // delete(id: string): void
+  delete(id: string): void
   exists?(id: string): Promise<boolean>
 }

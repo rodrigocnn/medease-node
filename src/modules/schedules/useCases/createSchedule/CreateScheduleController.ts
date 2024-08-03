@@ -1,12 +1,12 @@
 import { Request, Response } from "express"
-import { CreateProfessionalUseCase } from "./CreateProfessionalUseCase"
+import { CreateScheduleUseCase } from "./CreateScheduleUseCase"
+import { container } from "tsyringe"
 
-export class CreateProfessionalsController {
-  constructor(private createProfessionalUseCase: CreateProfessionalUseCase) {}
-
+export class CreateScheduleController {
   handle(request: Request, response: Response) {
     try {
-      this.createProfessionalUseCase.execute({ ...request.body })
+      const createScheduleUseCase = container.resolve(CreateScheduleUseCase)
+      createScheduleUseCase.execute({ ...request.body })
       return response.status(201).send({ success: true })
     } catch (error) {
       if (error instanceof Error) {
