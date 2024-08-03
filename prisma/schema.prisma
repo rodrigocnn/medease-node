@@ -33,7 +33,7 @@ model Role {
   professionals Professional[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  deletedAt DateTime?       @db.DateTime
 
 }
 
