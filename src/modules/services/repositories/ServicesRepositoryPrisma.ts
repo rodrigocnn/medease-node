@@ -7,7 +7,11 @@ export class ServicesRepositoryPrisma implements IServicesRepository {
     await prisma.service.create({ data: service })
   }
   async read() {
-    const services = await prisma.service.findMany()
+    const services = await prisma.service.findMany({
+      where: {
+        deletedAt: null,
+      },
+    })
     return services
   }
 
@@ -34,9 +38,13 @@ export class ServicesRepositoryPrisma implements IServicesRepository {
   }
 
   async delete(id: string) {
-    await prisma.service.delete({
+    const now = new Date()
+    return await prisma.service.update({
       where: {
         id: Number(id),
+      },
+      data: {
+        deletedAt: now,
       },
     })
   }
