@@ -7,7 +7,11 @@ export class PatientsRepositoryPrima implements IPatientsRepository {
   }
 
   async read() {
-    const patients = await prisma.patient.findMany()
+    const patients = await prisma.patient.findMany({
+      where: {
+        deletedAt: null,
+      },
+    })
     return patients
   }
 
@@ -65,9 +69,13 @@ export class PatientsRepositoryPrima implements IPatientsRepository {
   }
 
   async delete(id: string) {
-    await prisma.patient.delete({
+    const now = new Date()
+    return await prisma.patient.update({
       where: {
         id: Number(id),
+      },
+      data: {
+        deletedAt: now,
       },
     })
   }
