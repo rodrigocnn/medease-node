@@ -9,6 +9,9 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
   async read() {
     const professionals = await prisma.professional.findMany({
       include: { role: true },
+      where: {
+        deletedAt: null,
+      },
     })
 
     return professionals.map((result) => ({
@@ -90,9 +93,13 @@ export class ProfessionalsRepositoryPrima implements IProfessionalsRepository {
   }
 
   async delete(id: string) {
-    await prisma.professional.delete({
+    const now = new Date()
+    return await prisma.professional.update({
       where: {
         id: Number(id),
+      },
+      data: {
+        deletedAt: now,
       },
     })
   }
