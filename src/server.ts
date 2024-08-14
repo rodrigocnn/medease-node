@@ -8,7 +8,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://medease.up.railway.app/",
   optionsSuccessStatus: 200, // algumas versões do navegador 204
 }
 
