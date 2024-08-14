@@ -17,5 +17,6 @@ export class ShowProfessionalUseCase {
       }
       return roleExists
     }
+    return null
   }
 }

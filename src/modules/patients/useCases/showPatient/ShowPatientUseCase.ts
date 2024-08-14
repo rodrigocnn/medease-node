@@ -17,5 +17,6 @@ export class ShowPatientUseCase {
       }
       return roleExists
     }
+    return null
   }
 }

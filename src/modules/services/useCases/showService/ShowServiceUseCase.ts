@@ -17,5 +17,6 @@ export class ShowServiceUseCase {
       }
       return roleExists
     }
+    return null
   }
 }
