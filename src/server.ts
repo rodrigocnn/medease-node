@@ -8,8 +8,8 @@ import dotenv from "dotenv"
 dotenv.config()
 
 const corsOptions = {
-  origin: "https://medease.up.railway.app/",
-  optionsSuccessStatus: 200, // algumas versões do navegador 204
+  origin: "https://medease.up.railway.app",
+  optionsSuccessStatus: 200,
 }
 
 const PORT = process.env.PORT || 3333
