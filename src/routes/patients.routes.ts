@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createPatientController } from "../modules/patients/useCases/createPatient"
+import { createPatientController } from "../modules/patients/useCases/create-patient"
 import { readPatientsController } from "../modules/patients/useCases/readPatients"
 import { updatePatientController } from "../modules/patients/useCases/updatePatient"
 import { ShowPatientController } from "../modules/patients/useCases/showPatient/ShowPatientController"
