@@ -11,6 +11,11 @@ export class SchedulesRepositoryPrisma implements ISchedulesRepository {
       include: {
         patient: true,
       },
+      where: {
+        status: {
+          equals: Number(1),
+        },
+      },
     }
     const schedules = await prisma.schedule.findMany(params)
     return schedules
